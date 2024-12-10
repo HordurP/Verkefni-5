@@ -1,0 +1,138 @@
+[
+    {
+        "id": "15e75238de5b6e7b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ed789c37385660b1",
+        "type": "debug",
+        "z": "15e75238de5b6e7b",
+        "name": "debug_mqttMonitor",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "44af7d8fb2f7f641",
+        "type": "mqtt in",
+        "z": "15e75238de5b6e7b",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "93c1e44f2d357b4e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "ed789c37385660b1"
+            ]
+        ]
+    },
+    {
+        "id": "708d3580481712b8",
+        "type": "mqtt out",
+        "z": "15e75238de5b6e7b",
+        "name": "",
+        "topic": "test/topic",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "93c1e44f2d357b4e",
+        "x": 460,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f911d683e038085c",
+        "type": "inject",
+        "z": "15e75238de5b6e7b",
+        "name": "inject",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "\"Test\"",
+        "payloadType": "str",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "1295122f5ae224d2"
+            ]
+        ]
+    },
+    {
+        "id": "1295122f5ae224d2",
+        "type": "json",
+        "z": "15e75238de5b6e7b",
+        "name": "Convert to json",
+        "property": "payload",
+        "action": "str",
+        "pretty": true,
+        "x": 280,
+        "y": 220,
+        "wires": [
+            [
+                "708d3580481712b8"
+            ]
+        ]
+    },
+    {
+        "id": "93c1e44f2d357b4e",
+        "type": "mqtt-broker",
+        "name": "Mqtt Server",
+        "broker": "10.201.48.109",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
